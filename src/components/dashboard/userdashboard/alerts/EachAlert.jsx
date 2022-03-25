@@ -6,8 +6,10 @@ export default function EachAlert({ alert }) {
 	
 	return (
 		<div 
+			className='each-alert'
 			style={{cursor: 'pointer'}}
 			onClick={() => navigate(`/alert/${alert.alertname}`)}
+			target="_blank"
 		>
 			{ alert.alertname }
 		</div>

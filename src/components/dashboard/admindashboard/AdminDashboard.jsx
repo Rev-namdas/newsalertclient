@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import * as api from '../../../api/apiCalls'
+import uploadicon from "../../../img/icon-upload.png"
+import "./admindashboard.css"
 
 export default function AdminDashboard() {
 	// METHOD 1
 	const [uploadedFile, setUploadedFile] = useState(null)
 	const [filename, setFilename] = useState(null)
 	const [message, setMessage] = useState(null)
+	const navigate = useNavigate()
 	
 	const handleFileUpload = (e) => {
 		e.preventDefault()
@@ -60,21 +64,52 @@ export default function AdminDashboard() {
 	// 	console.log('data', data);
 	// }
 
+	const handleLogut = (e) => {
+		e.preventDefault();
+
+		localStorage.removeItem('token')
+		localStorage.removeItem('role')
+		navigate('/')
+	}
+
     return <div>
-		<div>
-			<span>AdminDashboard</span>
+		<div className="header">
+			<span>Admin Dashboard</span>
+			<span className="grow"></span>
+			<div className="linkbar">
+				<div className="link-box" onClick={() => navigate('/dashboard/list')}>
+					<span>List</span>
+				</div>
+				<div className="link-box" onClick={handleLogut}>
+					<span>Log Out</span>
+				</div>
+			</div>
 		</div>
 
-		<div>
-			<input type="file" id="file" name="jsonfile" accept=".json" onChange={handleFileUpload} /> 
-		</div>
+		<section className="fileupload-container">
+			<div className="fileupload-section">
+					<div className="custom-center">
+						<span className="file-title">Upload Valid JSON File</span>
+					</div>
+					<label htmlFor="jsonfile" className="custom-center">
+						<img className="fileupload" src={uploadicon} alt="Upload"/>
+						<input type="file" id="jsonfile" name="jsonfile" accept=".json" onChange={handleFileUpload} /> 
+					</label>
+					{ 
+						filename 
+						&& 
+						<span className="custom-center-file">
+							<span className="selected-file">Selected File:</span> 
+							<span className="selected-file">{filename}</span> 
+						</span>
+					}
+					<button className="submit-btn" onClick={handleSubmit}>Submit</button>
+					<div>
+						{message && <span>{message}</span>}
+					</div>
+			</div>
 
-		<div>
-			<button onClick={handleSubmit}>Submit</button>
-		</div>
 
-		<div>
-			{message && <span>{message}</span>}
-		</div>
+		</section>
 	</div>;
 }

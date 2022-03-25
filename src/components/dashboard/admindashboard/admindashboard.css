@@ -1,0 +1,109 @@
+.header{
+	background-color: rgb(0, 78, 88);
+	width: calc(100vw - 3rem);
+	height: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: bold;
+	padding: 0 1.5rem;
+}
+
+.grow{
+	flex-grow: 1;
+}
+
+.linkbar{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.link-box{
+	height: 3rem;
+	width: 5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.link-box:hover{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 78, 88);
+	cursor: pointer;
+	border-radius: 0.2rem;
+}
+
+.fileupload-container{
+	margin: 0 10rem;
+	height: calc(100vh - 4rem);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fileupload-section{
+	display: flex;
+	flex-direction: column;
+	padding: 5rem;
+	background: white;
+    /* border: 1px solid #777; */
+    box-shadow: 0 2px 5px 0 rgba(0,0,0, .5);
+    border-radius: .25rem;
+}
+
+.admindashboard-row{
+	flex: 1;
+}
+
+input[type="file"]{
+	display: none;
+}
+
+.fileupload{
+	height: 200px;
+	width: 200px;
+	transition: transform .2s;
+}
+
+.fileupload:hover{
+	cursor: pointer;
+	transform: scale(0.8)
+}
+
+.custom-center{
+	display: flex;
+	justify-content: center;
+}
+
+.custom-center-file{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.selected-file{
+	font-size: 1rem;
+}
+
+.file-title{
+	font-size: 1.2rem;
+}
+
+.submit-btn{
+	margin: 0.5rem 0;
+	height: 2rem;
+	border: none;
+	background-color: rgb(0, 78, 88);
+	color: white;
+	font-size: 1rem;
+	border-radius: 0.25rem;
+}
+
+.submit-btn:hover{
+	cursor: pointer;
+	background-color: rgb(0, 51, 58);
+
+}

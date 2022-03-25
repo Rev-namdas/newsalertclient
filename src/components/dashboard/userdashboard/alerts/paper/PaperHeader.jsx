@@ -4,7 +4,7 @@ import "../../userdashboard.css"
 export default function PaperHeader() {
   return (
 	<div className="header-title">
-		<span>Company Name</span>
+		<span>Alert Banner</span>
 	</div>
   )
 }
