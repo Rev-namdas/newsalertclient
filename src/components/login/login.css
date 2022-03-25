@@ -1,0 +1,66 @@
+.login-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	background-color: rgb(0, 172, 224);
+}
+
+.login-box{
+	height: 15rem;
+	width: 20rem;
+	background-color: #fff;
+	padding: 3rem;
+}
+
+.login-title{
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.login-input{
+	height: 2rem;
+	width: 19.5rem;
+	margin-top: 1.5rem;
+	border: none;
+	background-color: rgb(223, 223, 223);
+	font-size: 1rem;
+	padding-left: 0.5rem;
+}
+
+.login-btn-group{
+	margin-top: 2rem;
+	display: flex;
+}
+
+.login-btn{
+	flex: 1;
+}
+
+.login-button, .register-button{
+	height: 2rem;
+	width: 9rem;
+	background-color: rgb(0, 105, 131);
+	border: none;
+	color: white;
+	flex: 1;
+}
+
+.register-button{
+	background-color: #7f3c85;
+}
+
+.login-button + .register-button, .register-button + .login-button{
+	margin-left: 0.5rem;
+}
+
+.login-button:hover{
+	cursor: pointer;
+	background-color: rgb(0, 65, 82);
+}
+
+.register-button:hover{
+	cursor: pointer;
+	background-color: #612c66;
+}
