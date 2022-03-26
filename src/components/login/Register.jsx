@@ -16,24 +16,32 @@ export default function Login() {
 	const handleRegister = async (e) => {
 		e.preventDefault()
 
-		const res = await api.register({ username, password })
-
-        if(res.status === 202){
+        if(username === "" || password === ""){
             setMessage({
-                content: res.data.message,
+                content: "All fields are required !",
                 type: "warning"
             })
+        } else {
+            const res = await api.register({ username, password })
+    
+            if(res.status === 202){
+                setMessage({
+                    content: res.data.message,
+                    type: "warning"
+                })
+            }
+    
+            if(res.status === 200){
+                setUsername("")
+                setPassword("")
+        
+                setMessage({
+                    content: res.data.message,
+                    type: "success"
+                })
+            }
         }
 
-        if(res.status === 200){
-            setUsername("")
-            setPassword("")
-    
-            setMessage({
-                content: res.data.message,
-                type: "success"
-            })
-        }
 	}
 
     return (

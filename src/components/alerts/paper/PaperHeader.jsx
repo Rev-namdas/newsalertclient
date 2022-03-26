@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../userdashboard.css"
+import "../../dashboard/userdashboard/userdashboard.css"
 
 export default function PaperHeader() {
   return (

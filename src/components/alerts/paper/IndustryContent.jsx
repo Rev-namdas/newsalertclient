@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import EachMidContent from "./EachMidContent";
+import EachMidContent from "./MidContent/EachMidContent";
 
 export default function IndustryContent({ content, title, color }) {
     const [data, setData] = useState([])
@@ -20,10 +20,9 @@ export default function IndustryContent({ content, title, color }) {
 		{
 			content && data &&
 			data.map((each, index) => (
-				<>
+				<React.Fragment key={index}>
 				<div 
-					key={index} 
-					style={{ 
+						style={{ 
 						backgroundColor: color,
 						display: "flex",
 						flexDirection: "row",
@@ -50,7 +49,7 @@ export default function IndustryContent({ content, title, color }) {
 				{content[each].data.map((eachContent, index) => (
 					<EachMidContent key={index} content={eachContent} />
 				))}
-				</>
+				</React.Fragment>
 			))
 		}
 	</div>;

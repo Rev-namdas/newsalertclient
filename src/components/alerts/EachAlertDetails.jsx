@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import * as api from '../../../../api/apiCalls'
-import "../userdashboard.css"
-import CustomHeader from "./paper/CustomHeader";
-import CustomSubHeader from "./paper/CustomSubHeader";
-import IndustryContent from "./paper/IndustryContent";
-import MainContent from "./paper/MainContent";
-import MidContent from "./paper/MidContent";
-import PaperFooter from "./paper/PaperFooter";
-import PaperHeader from "./paper/PaperHeader";
+import * as api from '../../api/apiCalls'
+import "../dashboard/userdashboard/userdashboard.css"
+import CustomHeader from "../alerts/paper/CustomHeader";
+import CustomSubHeader from "../alerts/paper/CustomSubHeader";
+import IndustryContent from "../alerts/paper/IndustryContent";
+import MainContent from "../alerts/paper/MainContent/MainContent";
+import MidContent from "../alerts/paper/MidContent/MidContent";
+import PaperHeader from "../alerts/paper/PaperHeader";
+import PaperFooter from "../alerts/paper/PaperFooter";
 
 export default function EachAlertDetails() {
     const [data, setData] = useState([])
@@ -43,9 +43,6 @@ export default function EachAlertDetails() {
 				<span>{`${userType === 'admin' ? "Admin" : "User"}`} Dashboard</span>
 				<span className="grow"></span>
 				<div className="linkbar">
-					<div className="link-box" onClick={() => navigate('/dashboard')}>
-						<span>{`${userType === 'admin' ? "Upload" : "List"}`}</span>
-					</div>
 					{
 						userType && 
 						userType === "admin" &&
@@ -54,6 +51,9 @@ export default function EachAlertDetails() {
 							</div>
 								
 					}
+					<div className="link-box" onClick={() => navigate('/dashboard')}>
+						<span>{`${userType === 'admin' ? "Upload" : "List"}`}</span>
+					</div>
 					<div className="link-box" onClick={handleLogut}>
 						<span>Log Out</span>
 					</div>

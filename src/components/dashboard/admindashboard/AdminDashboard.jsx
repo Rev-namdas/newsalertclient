@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import * as api from '../../../api/apiCalls'
 import uploadicon from "../../../img/icon-upload.png"
+import MessageInfo from "../../messageinfo/MessageInfo"
 import "./admindashboard.css"
 
 export default function AdminDashboard() {
 	// METHOD 1
 	const [uploadedFile, setUploadedFile] = useState(null)
 	const [filename, setFilename] = useState(null)
-	const [message, setMessage] = useState(null)
+	const [message, setMessage] = useState({
+		content: null,
+		type: null
+	})
 	const navigate = useNavigate()
 	
 	const handleFileUpload = (e) => {
@@ -21,16 +25,29 @@ export default function AdminDashboard() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 
-		const formdata = new FormData();
-		formdata.append('myFileName', filename);
-		formdata.append('jsonfile', uploadedFile);
-
-		try {
-			const res = await api.JSONfileUpload(formdata)
-			setMessage(res.data.message)
-		} catch (error) {
-			console.log(error.message);
+		if(filename && uploadedFile){
+			const formdata = new FormData();
+			formdata.append('myFileName', filename);
+			formdata.append('jsonfile', uploadedFile);
+	
+			try {
+				const res = await api.JSONfileUpload(formdata)
+				setMessage({
+					content: res.data.message,
+					type: "success"
+				})
+			} catch (error) {
+				console.log(error.message);
+			}
+		} else {
+			setMessage({
+				content: "No File Selected",
+				type: "warning"
+			})
 		}
+
+		setUploadedFile(null);
+		setFilename(null)
 	}
 
 	// METHOD 2
@@ -104,8 +121,8 @@ export default function AdminDashboard() {
 						</span>
 					}
 					<button className="submit-btn" onClick={handleSubmit}>Submit</button>
-					<div>
-						{message && <span>{message}</span>}
+					<div className="custom-center">
+						{message.content && <MessageInfo message={message.content} type={message.type} />}
 					</div>
 			</div>
 

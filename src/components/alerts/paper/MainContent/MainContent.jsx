@@ -19,9 +19,8 @@ export default function MainContent({ content }) {
 	return <div>
 		{
 			data.map((each, index) => (
-				<>
+				<React.Fragment key={index}>
 				<div 
-					key={index} 
 					style={{ 
 						backgroundColor: `${content[each].company_bg.split(";")[0].split(":")[1]}`,
 						display: "flex",
@@ -48,7 +47,7 @@ export default function MainContent({ content }) {
 				{content[each].data.map((eachContent, index) => (
 					<EachMainDataContent key={index} content={eachContent} />
 				))}
-				</>
+				</React.Fragment>
 			))
 		}
 	</div>;

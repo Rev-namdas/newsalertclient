@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:5000'
-// const URL = 'http://192.168.110.138:5000'
+// const URL = 'http://localhost:5000'
+const URL = 'http://192.168.110.138:5000'
 
 //user api
 export const register = (data) => axios.post(`${URL}/user/register`, data)

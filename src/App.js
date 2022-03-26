@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/login/Login";
 import Register from "./components/login/Register";
 import Dashboard from "./components/dashboard/Dashboard";
-import EachAlertDetails from "./components/dashboard/userdashboard/alerts/EachAlertDetails";
+import EachAlertDetails from "./components/alerts/EachAlertDetails";
 import UserDashboard from "./components/dashboard/userdashboard/UserDashboard";
 
 function App() {

@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import * as api from '../../../api/apiCalls'
-import EachAlert from "./alerts/EachAlert";
+import EachAlert from "../../alerts/EachAlert";
 import "./userdashboard.css"
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 
-export default function UserDashboard() {
-	const [alerts, setAlerts] = useState(null)
+const queryClient = new QueryClient()
+
+export default function WrappedUserDashboard(){
+	return (
+		<QueryClientProvider client={queryClient}>
+			<UserDashboard />
+		</QueryClientProvider>
+	)
+}
+
+function UserDashboard() {
+	const { data } = useQuery('alerts', api.getalerts)
 	const [userType, setUserType] = useState(null)
 	const navigate = useNavigate()
-
-	const fetchAlerts = async () => {
-		const res = await api.getalerts()
-
-		setAlerts(res.data)
-		setUserType(localStorage.getItem('role'))
-	}
-
+	
 	useEffect(() => {
-		fetchAlerts()
+		setUserType(localStorage.getItem('role'))
 	}, 
 	//eslint-disable-next-line
 	[])
@@ -31,7 +35,7 @@ export default function UserDashboard() {
 	}
 
     return <div>
-		<div className="header">
+		<div className="header sticky-header">
 			<span>{`${userType === 'admin' ? "Admin" : "User"}`} Dashboard</span>
 			<span className="grow"></span>
 			<div className="linkbar">
@@ -50,7 +54,7 @@ export default function UserDashboard() {
 
 		<div className="alert-list-container">
 			<div className="alert-list-title"><span>Alert List</span></div>
-			{alerts && alerts.map((each, index) => (
+			{data && data.data.map((each, index) => (
 				<EachAlert key={index} alert={each} />
 			))}
 		</div>
