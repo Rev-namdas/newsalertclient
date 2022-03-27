@@ -33,6 +33,7 @@ export default function Login() {
                 if(res.data.token) {
                     localStorage.setItem("token", res.data.token)
                     localStorage.setItem("role", res.data.role)
+                    localStorage.setItem("client", res.data.client)
         
                     navigate('/dashboard')
                 } 

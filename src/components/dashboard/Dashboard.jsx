@@ -4,24 +4,24 @@ import UserDashboard from './userdashboard/UserDashboard'
 import Error404 from '../404/Error404'
 
 export default function Dashboard() {
-    const [userRole, setUserRole] = useState(null);
+    const [userType, setUserType] = useState(null);
+	const [client, setClient] = useState(null)
 
     useEffect(() => {
-        const role = localStorage.getItem('role');
-
-		setUserRole(role)
+		setClient(localStorage.getItem('client'))
+		setUserType(localStorage.getItem('role'))
     }, 
 	//eslint-disable-next-line
 	[]);
 
 	return (
-		userRole
+		userType
 		?
-			(userRole === 'admin'
+			(userType === 'admin'
 				?
 					<AdminDashboard />
 				:
-					<UserDashboard />
+					<UserDashboard userRole={userType} client={client} />
 			)
 		:
 			<Error404 />

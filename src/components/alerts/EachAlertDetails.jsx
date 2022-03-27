@@ -13,6 +13,7 @@ import PaperFooter from "../alerts/paper/PaperFooter";
 export default function EachAlertDetails() {
     const [data, setData] = useState([])
 	const [userType, setUserType] = useState(null)
+	const [client, setClient] = useState(null)
 	const params = useParams()
 	const navigate = useNavigate()
 
@@ -21,6 +22,7 @@ export default function EachAlertDetails() {
 
 		setData(res.data)
 		setUserType(localStorage.getItem('role'))
+		setClient(localStorage.getItem('client'))
 	}
 
 	useEffect(() => {
@@ -34,13 +36,14 @@ export default function EachAlertDetails() {
 
 		localStorage.removeItem('token')
 		localStorage.removeItem('role')
+		localStorage.removeItem('client')
 		navigate('/')
 	}
 
 	return (
 		<div>
 			<div className="header sticky-header">
-				<span>{`${userType === 'admin' ? "Admin" : "User"}`} Dashboard</span>
+				<span>{`${userType === 'admin' ? "Admin Dashboard" : client}`}</span>
 				<span className="grow"></span>
 				<div className="linkbar">
 					{

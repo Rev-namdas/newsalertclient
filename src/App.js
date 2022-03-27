@@ -4,7 +4,7 @@ import Login from "./components/login/Login";
 import Register from "./components/login/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import EachAlertDetails from "./components/alerts/EachAlertDetails";
-import UserDashboard from "./components/dashboard/userdashboard/UserDashboard";
+import AlertList from "./components/alerts/AlertList";
 
 function App() {
     return <div>
@@ -13,7 +13,7 @@ function App() {
                 <Route path="/"  element={<Login />} />
                 <Route path="/register"  element={<Register />} />
                 <Route path="/dashboard"  element={<Dashboard />} />
-                <Route path="/dashboard/list"  element={<UserDashboard />} />
+                <Route path="/dashboard/list"  element={<AlertList />} />
                 <Route path="/alert/:alertname"  element={<EachAlertDetails />} />
             </Routes>
         </Router>
